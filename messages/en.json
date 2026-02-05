@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "modern": "Modern",
+    "historical": "Historical"
+  },
+  "header": {
+    "archiveLabel": "Archive",
+    "title": "Name Atelier"
+  },
+  "footer": {
+    "title": "Chinese Name Generator",
+    "tagline": "An archive of identity",
+    "powered": "Powered by SiliconFlow AI · {year}",
+    "heritage": "Cultural lineage · Names as mirrors"
+  },
+  "landing": {
+    "series": "Archive Series 01",
+    "headline": "Name is the first",
+    "headlineAccent": "story we carry.",
+    "description": "A studio for modern identity and historical memory. Generate a Chinese name with precision, or explore figures who shaped entire dynasties.",
+    "ctaModern": "Begin Modern",
+    "ctaHistorical": "Open Archive",
+    "processBadge": "Seal",
+    "processLabel": "Curated Process",
+    "processTitle": "From sound, meaning, and legacy.",
+    "processItems": {
+      "phonetic": "Phonetic alignment",
+      "harmony": "Character harmony",
+      "cultural": "Cultural resonance",
+      "historical": "Historical context"
+    },
+    "cardModern": {
+      "label": "Studio",
+      "title": "Modern Generation",
+      "description": "Linguistic synthesis tuned to your sound, style, and intent.",
+      "action": "Enter the studio"
+    },
+    "cardHistorical": {
+      "label": "Archive",
+      "title": "Historical Archive",
+      "description": "Trace the names that defined dynasties and cultural memory.",
+      "action": "Open the archive"
+    }
+  },
+  "modern": {
+    "label": "Modern Studio",
+    "title": "Craft a contemporary Chinese name.",
+    "description": "Select the tone, style, and rhythm. We'll generate names that feel natural to speak and meaningful to keep.",
+    "note": "Output includes surname, pinyin, meaning, and cultural context.",
+    "sectionTitle": "Generated Names",
+    "sectionLabel": "Result Set",
+    "empty": "Your journey begins here. Fill out the form to generate names."
+  },
+  "historical": {
+    "label": "Historical Archive",
+    "title": "Forge a historical Chinese name.",
+    "description": "Choose a dynasty, style, and rhythm to shape an AI-crafted historical name.",
+    "note": "Each result includes a short backstory and tonal tags.",
+    "empty": "Set your dynasty and preferences to generate a historical name.",
+    "storyLabel": "Historical Story",
+    "tagsLabel": "Tone Tags",
+    "sourceLabel": "Source (Wikipedia)",
+    "matchLabel": "Pronunciation Match",
+    "sectionTitle": "Generated Records",
+    "sectionLabel": "Archive Set"
+  },
+  "forms": {
+    "modern": {
+      "eyebrow": "Modern Studio",
+      "title": "Name Preferences",
+      "badge": "AI-Driven",
+      "realNameLabel": "Your Real Name (optional)",
+      "realNamePlaceholder": "e.g. Alex Smith",
+      "realNameDescription": "Used for personalized context.",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Select gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "styleLabel": "Name Style",
+      "stylePlaceholder": "Select style",
+      "styleElegant": "Elegant (高雅)",
+      "stylePowerful": "Powerful (霸气)",
+      "styleLiterary": "Literary (文雅)",
+      "styleModern": "Modern (潮流)",
+      "lengthLabel": "Character Length",
+      "lengthPlaceholder": "Select length",
+      "lengthSingle": "Single Character (e.g. 云)",
+      "lengthDouble": "Double Characters (e.g. 若兰)",
+      "lengthAny": "Any",
+      "submit": "Generate My Chinese Name"
+    },
+    "historical": {
+      "eyebrow": "Historical Studio",
+      "title": "Historical Name Preferences",
+      "badge": "AI-Driven",
+      "realNameLabel": "Your Real Name (optional)",
+      "realNamePlaceholder": "e.g. Alex Smith",
+      "realNameDescription": "Used to inspire a historical-sounding name.",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Select gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "dynastyLabel": "Dynasty",
+      "dynastyPlaceholder": "Select dynasty",
+      "dynastyAny": "Any Dynasty",
+      "dynastyThree": "Three Kingdoms (三国)",
+      "dynastyShangZhou": "Shang & Zhou (商周)",
+      "dynastyQinHan": "Qin & Han (秦汉)",
+      "dynastyWeiJin": "Wei-Jin & Northern/Southern Dynasties (魏晋南北朝)",
+      "dynastySuiTang": "Sui & Tang (隋唐)",
+      "dynastyFiveDyn": "Five Dynasties & Ten Kingdoms (五代十国)",
+      "dynastySong": "Song (宋)",
+      "styleLabel": "Name Style",
+      "stylePlaceholder": "Select style",
+      "styleElegant": "Elegant (高雅)",
+      "stylePowerful": "Powerful (豪气)",
+      "styleLiterary": "Literary (文雅)",
+      "styleModern": "Modern (潮流)",
+      "lengthLabel": "Given Name Length",
+      "lengthPlaceholder": "Select length",
+      "lengthSingle": "Single Character (e.g. 云)",
+      "lengthDouble": "Double Characters (e.g. 若兰)",
+      "lengthAny": "Any",
+      "submit": "Generate Historical Name"
+    }
+  },
+  "nameCard": {
+    "interpretation": "Interpretation",
+    "context": "Context"
+  },
+  "common": {
+    "export": "Export",
+    "exporting": "Exporting..."
+  },
+  "settings": {
+    "title": "Preferences",
+    "description": "Customize your name generation experience.",
+    "displayLanguage": "Display Language",
+    "explanationDepth": "Explanation Depth",
+    "brief": "Brief",
+    "briefDescription": "Simple meanings and etymology.",
+    "detailed": "Detailed",
+    "detailedDescription": "Deep cultural and linguistic analysis."
+  },
+  "language": {
+    "en": "English",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "We encountered an unexpected error while generating your name.",
+    "tryAgain": "Try again",
+    "returnHome": "Return Home"
+  },
+  "notFound": {
+    "title": "Lost in History?",
+    "description": "The page you're looking for doesn't exist or has been lost to time.",
+    "cta": "Back to the Present"
+  }
+}

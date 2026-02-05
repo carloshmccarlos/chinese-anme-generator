@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "modern": "현대",
+    "historical": "역사"
+  },
+  "header": {
+    "archiveLabel": "아카이브",
+    "title": "이름 아틀리에"
+  },
+  "footer": {
+    "title": "중국 이름 생성기",
+    "tagline": "정체성의 아카이브",
+    "powered": "SiliconFlow AI 제공 · {year}",
+    "heritage": "문화의 계보 · 이름은 거울"
+  },
+  "landing": {
+    "series": "아카이브 시리즈 01",
+    "headline": "이름은 우리가 지닌 첫",
+    "headlineAccent": "이야기입니다.",
+    "description": "현대적 정체성과 역사적 기억을 위한 스튜디오. 정교한 중국 이름을 생성하거나 왕조를 형성한 인물을 탐구하세요.",
+    "ctaModern": "현대 시작",
+    "ctaHistorical": "아카이브 열기",
+    "processBadge": "인장",
+    "processLabel": "큐레이션 프로세스",
+    "processTitle": "소리, 의미, 계보에서 출발.",
+    "processItems": {
+      "phonetic": "음운 정렬",
+      "harmony": "문자 조화",
+      "cultural": "문화적 공명",
+      "historical": "역사적 맥락"
+    },
+    "cardModern": {
+      "label": "스튜디오",
+      "title": "현대 생성",
+      "description": "당신의 소리, 스타일, 의도에 맞춘 언어 합성.",
+      "action": "스튜디오로"
+    },
+    "cardHistorical": {
+      "label": "아카이브",
+      "title": "역사 아카이브",
+      "description": "왕조와 문화 기억을 만든 이름을 추적합니다.",
+      "action": "아카이브 열기"
+    }
+  },
+  "modern": {
+    "label": "현대 스튜디오",
+    "title": "현대적인 중국 이름을 만듭니다.",
+    "description": "톤, 스타일, 리듬을 선택하세요. 자연스럽고 의미 있는 이름을 생성합니다.",
+    "note": "Output includes surname, pinyin, meaning, and cultural context.",
+    "sectionTitle": "생성 결과",
+    "sectionLabel": "결과 세트",
+    "empty": "여기에서 시작합니다. 폼을 채워 이름을 생성하세요."
+  },
+  "historical": {
+    "label": "역사 아카이브",
+    "title": "역사 중국 이름을 만듭니다.",
+    "description": "왕조, 스타일, 리듬을 선택하면 AI가 역사적 이름을 제안합니다.",
+    "note": "각 결과에는 짧은 배경 설명과 톤 태그가 포함됩니다.",
+    "empty": "왕조와 선호를 설정하고 역사 이름을 생성하세요.",
+    "storyLabel": "역사 이야기",
+    "tagsLabel": "톤 태그",
+    "sourceLabel": "출처 (Wikipedia)",
+    "matchLabel": "발음 매칭",
+    "sectionTitle": "생성 기록",
+    "sectionLabel": "아카이브"
+  },
+  "forms": {
+    "modern": {
+      "eyebrow": "현대 스튜디오",
+      "title": "이름 선호",
+      "badge": "AI 기반",
+      "realNameLabel": "실명(선택)",
+      "realNamePlaceholder": "예: Alex Smith",
+      "realNameDescription": "개인화 참고용으로 사용됩니다.",
+      "genderLabel": "성별",
+      "genderPlaceholder": "성별 선택",
+      "genderMale": "남성",
+      "genderFemale": "여성",
+      "styleLabel": "이름 스타일",
+      "stylePlaceholder": "스타일 선택",
+      "styleElegant": "우아함",
+      "stylePowerful": "강인함",
+      "styleLiterary": "문학적",
+      "styleModern": "현대적",
+      "lengthLabel": "글자 수",
+      "lengthPlaceholder": "글자 수 선택",
+      "lengthSingle": "한 글자(예: 云)",
+      "lengthDouble": "두 글자(예: 若兰)",
+      "lengthAny": "무관",
+      "submit": "중국 이름 생성"
+    },
+    "historical": {
+      "eyebrow": "Historical Studio",
+      "title": "Historical Name Preferences",
+      "badge": "AI-Driven",
+      "dynastyLabel": "Dynasty",
+      "dynastyPlaceholder": "Select dynasty",
+      "dynastyThree": "삼국(삼국 시대)",
+      "dynastyShangZhou": "상·주(상주)",
+      "dynastyQinHan": "진·한(진한)",
+      "dynastyWeiJin": "위진·남북조(위진남북조)",
+      "dynastySuiTang": "수·당(수당)",
+      "dynastyFiveDyn": "오대십국(오대십국)",
+      "dynastySong": "송(송)",
+      "submit": "Generate Historical Name",
+      "realNameLabel": "Your Real Name (optional)",
+      "realNamePlaceholder": "e.g. Alex Smith",
+      "realNameDescription": "Used to inspire a historical-sounding name.",
+      "genderLabel": "성별",
+      "genderPlaceholder": "성별 선택",
+      "genderMale": "남성",
+      "genderFemale": "여성",
+      "dynastyAny": "모든 왕조",
+      "styleLabel": "Name Style",
+      "stylePlaceholder": "Select style",
+      "styleElegant": "우아함(고아)",
+      "stylePowerful": "강건함(호기)",
+      "styleLiterary": "문아(문雅)",
+      "styleModern": "모던(현대)",
+      "lengthLabel": "Given Name Length",
+      "lengthPlaceholder": "Select length",
+      "lengthSingle": "한 글자(예: 雲)",
+      "lengthDouble": "두 글자(예: 若蘭)",
+      "lengthAny": "제한 없음"
+    }
+  },
+  "nameCard": {
+    "interpretation": "해석",
+    "context": "배경"
+  },
+  "common": {
+    "export": "내보내기",
+    "exporting": "내보내는 중..."
+  },
+  "settings": {
+    "title": "환경설정",
+    "description": "이름 생성 경험을 맞춤 설정합니다.",
+    "displayLanguage": "표시 언어",
+    "explanationDepth": "설명 깊이",
+    "brief": "간단",
+    "briefDescription": "간단한 의미와 어원.",
+    "detailed": "자세히",
+    "detailedDescription": "문화·언어적 심층 분석."
+  },
+  "language": {
+    "en": "English",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "error": {
+    "title": "문제가 발생했습니다",
+    "description": "이름 생성 중 예기치 않은 오류가 발생했습니다.",
+    "tryAgain": "다시 시도",
+    "returnHome": "홈으로"
+  },
+  "notFound": {
+    "title": "역사 속에서 길을 잃었나요?",
+    "description": "찾는 페이지가 없거나 시간 속으로 사라졌습니다.",
+    "cta": "현재로 돌아가기"
+  }
+}

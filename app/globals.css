@@ -1,26 +1,178 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+  --font-display: var(--font-headline);
+  
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --radius-none: 0;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Rice Paper / Warm White foundation */
+  --background: #F4F1EA;
+  /* Deep Ink Black - slightly warm */
+  --foreground: #2A2420;
+
+  /* Cinnabar (Seal Red) - Deep, rich, authoritative */
+  --primary: #9A2A2A; 
+  --primary-foreground: #F9F7F2;
+
+  /* Slightly darker paper for cards */
+  --card: #FDFBF7;
+  --card-foreground: #2A2420;
+
+  /* Dried Ink border */
+  --border: #E6DCCD;
+  --input: #E6DCCD;
+  --ring: #9A2A2A;
+
+  /* Faded Ink */
+  --muted: #E8E1D5;
+  --muted-foreground: #8C8070;
+
+  /* Gold/Silk Accents */
+  --accent: #E6D5B8;
+  --accent-foreground: #2A2420;
+
+  /* Secondary Paper tone */
+  --secondary: #EBE5D9;
+  --secondary-foreground: #2A2420;
+
+  --destructive: #B91C1C;
+  --destructive-foreground: #F9F7F2;
+
+  --popover: #FDFBF7;
+  --popover-foreground: #2A2420;
+}
+
+.dark {
+  /* Slate/Ink Stone background */
+  --background: #1C1917;
+  /* Off-white ink */
+  --foreground: #E8E1D5;
+
+  /* Bright Vermilion for contrast on dark */
+  --primary: #C53B3B;
+  --primary-foreground: #1C1917;
+
+  --card: #262220;
+  --card-foreground: #E8E1D5;
+
+  --border: #443B35;
+  --input: #443B35;
+  --ring: #C53B3B;
+
+  --muted: #2E2925;
+  --muted-foreground: #A89F91;
+
+  --accent: #3D352E;
+  --accent-foreground: #E8E1D5;
+
+  --secondary: #332D28;
+  --secondary-foreground: #E8E1D5;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #1C1917;
+
+  --popover: #262220;
+  --popover-foreground: #E8E1D5;
+}
+
+@layer utilities {
+  .writing-mode-vertical {
+    writing-mode: vertical-rl;
+  }
+  .font-display {
+    font-family: var(--font-headline), ui-serif, serif;
+    letter-spacing: 0.05em;
+  }
+  .ink-shadow {
+    box-shadow: 0 4px 20px -2px rgba(42, 36, 32, 0.12);
+  }
+  .paper-texture {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background font-sans text-foreground selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "palt";
+    position: relative;
+    font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", Roboto,
+      "Helvetica Neue", Arial, "Noto Sans", "Apple SD Gothic Neo", "Malgun Gothic",
+      "Yu Gothic", Meiryo, sans-serif;
+  }
+
+  html[lang="zh"] body,
+  html[lang^="zh-"] body,
+  html[lang="zh"] .font-display,
+  html[lang^="zh-"] .font-display {
+    font-family: "Songti SC", "STSong", "SimSun", "Noto Serif SC", serif;
+  }
+
+  html[lang="ja"] body,
+  html[lang="ja"] .font-display {
+    font-family: var(--font-body), "Yu Gothic", Meiryo, system-ui, sans-serif;
+  }
+
+  html[lang="ko"] body,
+  html[lang="ko"] .font-display {
+    font-family: var(--font-body), "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  }
+  
+  /* Global page grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  /* Subtle vignette */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(circle at center, transparent 0%, rgba(28, 25, 23, 0.03) 100%);
+  }
 }

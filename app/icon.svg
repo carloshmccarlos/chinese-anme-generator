@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#b91c1c" />
+  <rect x="9" y="9" width="46" height="46" rx="10" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.35" />
+  <text
+    x="32"
+    y="43"
+    text-anchor="middle"
+    font-size="34"
+    font-family="ui-serif, 'Noto Serif', serif"
+    fill="#ffffff"
+  >名</text>
+</svg>
+

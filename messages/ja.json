@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "modern": "モダン",
+    "historical": "歴史"
+  },
+  "header": {
+    "archiveLabel": "アーカイブ",
+    "title": "ネームアトリエ"
+  },
+  "footer": {
+    "title": "中国名ジェネレーター",
+    "tagline": "アイデンティティのアーカイブ",
+    "powered": "SiliconFlow AI によって提供 · {year}",
+    "heritage": "文化の系譜 · 名前は鏡"
+  },
+  "landing": {
+    "series": "アーカイブ・シリーズ 01",
+    "headline": "名前は私たちが携える最初の",
+    "headlineAccent": "物語。",
+    "description": "現代のアイデンティティと歴史の記憶のためのスタジオ。精密な中国名を生成するか、王朝を形作った人物を探究します。",
+    "ctaModern": "モダンへ",
+    "ctaHistorical": "アーカイブを開く",
+    "processBadge": "印",
+    "processLabel": "キュレーション工程",
+    "processTitle": "音・意味・系譜から。",
+    "processItems": {
+      "phonetic": "音の整合",
+      "harmony": "文字の調和",
+      "cultural": "文化的共鳴",
+      "historical": "歴史的文脈"
+    },
+    "cardModern": {
+      "label": "スタジオ",
+      "title": "モダン生成",
+      "description": "あなたの音・スタイル・意図に合わせた言語合成。",
+      "action": "スタジオへ"
+    },
+    "cardHistorical": {
+      "label": "アーカイブ",
+      "title": "歴史アーカイブ",
+      "description": "王朝と文化記憶を形作った名を辿る。",
+      "action": "アーカイブを開く"
+    }
+  },
+  "modern": {
+    "label": "モダン・スタジオ",
+    "title": "現代的な中国名を作る。",
+    "description": "語調、スタイル、リズムを選択。自然で意味のある名前を生成します。",
+    "note": "Output includes surname, pinyin, meaning, and cultural context.",
+    "sectionTitle": "生成結果",
+    "sectionLabel": "結果セット",
+    "empty": "ここから始まります。フォームを埋めて生成してください。"
+  },
+  "historical": {
+    "label": "歴史アーカイブ",
+    "title": "歴史の中国名を作る。",
+    "description": "王朝、スタイル、リズムを選び、AIが歴史的な名を提案します。",
+    "note": "各結果には短い背景説明とトーンタグが含まれます。",
+    "empty": "王朝と好みを設定して、歴史名を生成してください。",
+    "storyLabel": "歴史ストーリー",
+    "tagsLabel": "トーンタグ",
+    "sourceLabel": "出典（Wikipedia）",
+    "matchLabel": "発音の一致",
+    "sectionTitle": "生成記録",
+    "sectionLabel": "アーカイブ"
+  },
+  "forms": {
+    "modern": {
+      "eyebrow": "モダン・スタジオ",
+      "title": "名前の好み",
+      "badge": "AI 駆動",
+      "realNameLabel": "本名（任意）",
+      "realNamePlaceholder": "例: Alex Smith",
+      "realNameDescription": "パーソナライズの参考に使います。",
+      "genderLabel": "性別",
+      "genderPlaceholder": "性別を選択",
+      "genderMale": "男性",
+      "genderFemale": "女性",
+      "styleLabel": "名前のスタイル",
+      "stylePlaceholder": "スタイルを選択",
+      "styleElegant": "上品",
+      "stylePowerful": "力強い",
+      "styleLiterary": "文雅",
+      "styleModern": "モダン",
+      "lengthLabel": "文字数",
+      "lengthPlaceholder": "文字数を選択",
+      "lengthSingle": "1文字（例：云）",
+      "lengthDouble": "2文字（例：若兰）",
+      "lengthAny": "指定なし",
+      "submit": "中国名を生成"
+    },
+    "historical": {
+      "eyebrow": "Historical Studio",
+      "title": "Historical Name Preferences",
+      "badge": "AI-Driven",
+      "dynastyLabel": "Dynasty",
+      "dynastyPlaceholder": "Select dynasty",
+      "dynastyThree": "三国（三国時代）",
+      "dynastyShangZhou": "商・周（商周）",
+      "dynastyQinHan": "秦・漢（秦漢）",
+      "dynastyWeiJin": "魏晋・南北朝（魏晋南北朝）",
+      "dynastySuiTang": "隨・唐（隨唐）",
+      "dynastyFiveDyn": "五代十国（五代十国）",
+      "dynastySong": "宋（宋）",
+      "submit": "Generate Historical Name",
+      "realNameLabel": "Your Real Name (optional)",
+      "realNamePlaceholder": "e.g. Alex Smith",
+      "realNameDescription": "Used to inspire a historical-sounding name.",
+      "genderLabel": "性別",
+      "genderPlaceholder": "性別を選択",
+      "genderMale": "男性",
+      "genderFemale": "女性",
+      "dynastyAny": "任意の王朝",
+      "styleLabel": "Name Style",
+      "stylePlaceholder": "Select style",
+      "styleElegant": "優雅（高雅）",
+      "stylePowerful": "力強い（豪気）",
+      "styleLiterary": "文雅（文雅）",
+      "styleModern": "モダン（現代）",
+      "lengthLabel": "Given Name Length",
+      "lengthPlaceholder": "Select length",
+      "lengthSingle": "1文字（例：雲）",
+      "lengthDouble": "2文字（例：若蘭）",
+      "lengthAny": "指定なし"
+    }
+  },
+  "nameCard": {
+    "interpretation": "解釈",
+    "context": "背景"
+  },
+  "common": {
+    "export": "エクスポート",
+    "exporting": "エクスポート中..."
+  },
+  "settings": {
+    "title": "設定",
+    "description": "生成体験をカスタマイズします。",
+    "displayLanguage": "表示言語",
+    "explanationDepth": "解説の深さ",
+    "brief": "簡潔",
+    "briefDescription": "短い意味と語源。",
+    "detailed": "詳細",
+    "detailedDescription": "文化と言語の深い分析。"
+  },
+  "language": {
+    "en": "English",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "error": {
+    "title": "問題が発生しました",
+    "description": "名前の生成中に予期しないエラーが発生しました。",
+    "tryAgain": "再試行",
+    "returnHome": "ホームへ戻る"
+  },
+  "notFound": {
+    "title": "歴史の迷子？",
+    "description": "お探しのページは存在しないか、時の中で失われました。",
+    "cta": "現在へ戻る"
+  }
+}

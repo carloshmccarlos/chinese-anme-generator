@@ -1,0 +1,162 @@
+{
+  "nav": {
+    "modern": "现代",
+    "historical": "历史"
+  },
+  "header": {
+    "archiveLabel": "档案",
+    "title": "名字工坊"
+  },
+  "footer": {
+    "title": "中文姓名生成器",
+    "tagline": "身份的档案",
+    "powered": "由 SiliconFlow AI 驱动 · {year}",
+    "heritage": "文化传承 · 以名为镜"
+  },
+  "landing": {
+    "series": "档案系列 01",
+    "headline": "名字是我们携带的第一段",
+    "headlineAccent": "故事。",
+    "description": "面向现代身份与历史记忆的工作室。精准生成中文名，或探索塑造王朝的传奇人物。",
+    "ctaModern": "进入现代",
+    "ctaHistorical": "开启档案",
+    "processBadge": "印章",
+    "processLabel": "精选流程",
+    "processTitle": "从声音、含义与传承出发。",
+    "processItems": {
+      "phonetic": "语音对齐",
+      "harmony": "字形和谐",
+      "cultural": "文化共鸣",
+      "historical": "历史语境"
+    },
+    "cardModern": {
+      "label": "工作室",
+      "title": "现代生成",
+      "description": "根据声音、风格与意图进行语言合成。",
+      "action": "进入工作室"
+    },
+    "cardHistorical": {
+      "label": "档案",
+      "title": "历史档案",
+      "description": "追溯定义王朝与文化记忆的名字。",
+      "action": "开启档案"
+    }
+  },
+  "modern": {
+    "label": "现代工作室",
+    "title": "打造当代中文名。",
+    "description": "选择语气、风格与节奏，我们将生成自然好读且富有含义的名字。",
+    "note": "Output includes surname, pinyin, meaning, and cultural context.",
+    "sectionTitle": "生成结果",
+    "sectionLabel": "结果集",
+    "empty": "旅程从这里开始。填写表单以生成名字。"
+  },
+  "historical": {
+    "label": "历史档案",
+    "title": "Forge a historical Chinese name.",
+    "description": "Choose a dynasty, style, and rhythm to shape an AI-crafted historical name.",
+    "note": "Each result includes a short backstory and tonal tags.",
+    "empty": "Set your dynasty and preferences to generate a historical name.",
+    "storyLabel": "Historical Story",
+    "tagsLabel": "Tone Tags",
+    "sourceLabel": "Source (Wikipedia)",
+    "matchLabel": "Pronunciation Match",
+    "sectionTitle": "生成记录",
+    "sectionLabel": "档案集"
+  },
+  "forms": {
+    "modern": {
+      "eyebrow": "现代工作室",
+      "title": "姓名偏好",
+      "badge": "AI 驱动",
+      "realNameLabel": "你的真实姓名（可选）",
+      "realNamePlaceholder": "例如：Alex Smith",
+      "realNameDescription": "用于个性化参考。",
+      "genderLabel": "性别",
+      "genderPlaceholder": "选择性别",
+      "genderMale": "男",
+      "genderFemale": "女",
+      "styleLabel": "姓名风格",
+      "stylePlaceholder": "选择风格",
+      "styleElegant": "高雅",
+      "stylePowerful": "霸气",
+      "styleLiterary": "文雅",
+      "styleModern": "潮流",
+      "lengthLabel": "字数",
+      "lengthPlaceholder": "选择字数",
+      "lengthSingle": "单字（例：云）",
+      "lengthDouble": "双字（例：若兰）",
+      "lengthAny": "不限",
+      "submit": "生成我的中文名"
+    },
+    "historical": {
+      "eyebrow": "Historical Studio",
+      "title": "Historical Name Preferences",
+      "badge": "AI-Driven",
+      "dynastyLabel": "Dynasty",
+      "dynastyPlaceholder": "Select dynasty",
+      "dynastyThree": "三国（三国）",
+      "dynastyShangZhou": "商周（商周）",
+      "dynastyQinHan": "秦汉（秦汉）",
+      "dynastyWeiJin": "魏晋南北朝（魏晋南北朝）",
+      "dynastySuiTang": "雋唐（雋唐）",
+      "dynastyFiveDyn": "五代十国（五代十国）",
+      "dynastySong": "宋（宋）",
+      "submit": "Generate Historical Name",
+      "realNameLabel": "Your Real Name (optional)",
+      "realNamePlaceholder": "e.g. Alex Smith",
+      "realNameDescription": "Used to inspire a historical-sounding name.",
+      "genderLabel": "性别",
+      "genderPlaceholder": "选择性别",
+      "genderMale": "男",
+      "genderFemale": "女",
+      "dynastyAny": "不限朝代",
+      "styleLabel": "Name Style",
+      "stylePlaceholder": "Select style",
+      "styleElegant": "高雅",
+      "stylePowerful": "豪气",
+      "styleLiterary": "文雅",
+      "styleModern": "现代",
+      "lengthLabel": "Given Name Length",
+      "lengthPlaceholder": "Select length",
+      "lengthSingle": "单字（例：云）",
+      "lengthDouble": "双字（例：若兰）",
+      "lengthAny": "不限"
+    }
+  },
+  "nameCard": {
+    "interpretation": "释义",
+    "context": "背景"
+  },
+  "common": {
+    "export": "导出",
+    "exporting": "导出中..."
+  },
+  "settings": {
+    "title": "偏好设置",
+    "description": "自定义你的取名体验。",
+    "displayLanguage": "显示语言",
+    "explanationDepth": "解释深度",
+    "brief": "简要",
+    "briefDescription": "简要含义与词源。",
+    "detailed": "详细",
+    "detailedDescription": "深入文化与语言解析。"
+  },
+  "language": {
+    "en": "English",
+    "zh": "中文",
+    "ja": "日本語",
+    "ko": "한국어"
+  },
+  "error": {
+    "title": "出现问题",
+    "description": "生成名字时发生意外错误。",
+    "tryAgain": "重试",
+    "returnHome": "返回首页"
+  },
+  "notFound": {
+    "title": "迷失在历史中？",
+    "description": "你要找的页面不存在或已消失在时间里。",
+    "cta": "回到当下"
+  }
+}

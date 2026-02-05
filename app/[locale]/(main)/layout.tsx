@@ -1,0 +1,36 @@
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { SITE_NAME, SITE_URL, toSafeLocale } from '@/lib/seo';
+
+interface Props {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}
+
+export default async function MainLayout({ children, params }: Props) {
+  const { locale } = await params;
+  const safeLocale = toSafeLocale(locale);
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME[safeLocale],
+    url: `${SITE_URL}/${safeLocale}`,
+    inLanguage: safeLocale,
+  };
+
+  return (
+    <div className="relative min-h-screen font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Header />
+      <div className="relative z-10 flex min-h-[calc(100vh-8rem)] flex-col">
+        <main className="flex-1 container mx-auto px-6 pb-24 pt-10 sm:px-8 lg:px-12">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </div>
+  );
+}
