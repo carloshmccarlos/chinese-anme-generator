@@ -1,5 +1,6 @@
-﻿import type { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Noto_Sans, Noto_Sans_Mono, Noto_Serif } from 'next/font/google';
+import Script from 'next/script';
 import { getLocale } from 'next-intl/server';
 import './globals.css';
 
@@ -48,16 +49,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout(
+  { children }: Readonly<{ children: React.ReactNode }>
+) {
   const locale = await getLocale();
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} antialiased`}>
+        <Script
+          defer
+          src="https://umami-ten-khaki-92.vercel.app/script.js"
+          data-website-id="a0199c59-61cd-462f-a725-682c2818a94f"
+          strategy="afterInteractive"
+        />
         {children}
       </body>
     </html>
