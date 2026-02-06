@@ -246,13 +246,15 @@
 - [x] Update app/layout.tsx metadata
 - [x] Add OpenGraph defaults
 - [x] Add Twitter card defaults
-- [ ] Add favicon
-- [ ] Add robots + sitemap
+- [x] Add favicon
+- [x] Add robots + sitemap
+- [x] Add primary keyword focus: "best Chinese name generator"
 
 ### 9.2 Dynamic Metadata
-- [ ] Add generateMetadata to modern page
-- [ ] Add generateMetadata to historical page
-- [ ] Add per-locale canonical + hreflang alternates
+- [x] Add generateMetadata to modern page
+- [x] Add generateMetadata to historical page
+- [x] Add per-locale canonical + hreflang alternates
+- [x] Add locale-aware keyword metadata + structured data
 
 ---
 
@@ -336,7 +338,7 @@
 | 6. Custom Hooks | Not Started | 0% |
 | 7. UI Components | Not Started | 0% |
 | 8. Pages | Not Started | 0% |
-| 9. SEO & Meta | Not Started | 0% |
+| 9. SEO & Meta | Completed | 100% |
 | 10. Polish & Optimization | Not Started | 0% |
 | 11. Testing & Deployment | Not Started | 0% |
 

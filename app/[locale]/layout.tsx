@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -9,7 +9,9 @@ import {
   buildLanguageAlternates,
   OG_LOCALE,
   SITE_DESCRIPTION,
+  SITE_KEYWORDS,
   SITE_NAME,
+  SITE_OG_IMAGE,
   toSafeLocale,
 } from '@/lib/seo';
 
@@ -29,6 +31,7 @@ export async function generateMetadata(
   return {
     title: { default: siteName, template: `%s | ${siteName}` },
     description,
+    keywords: SITE_KEYWORDS[safeLocale],
     alternates: {
       canonical: `/${safeLocale}`,
       languages: buildLanguageAlternates('/'),
@@ -40,6 +43,20 @@ export async function generateMetadata(
       siteName,
       locale: OG_LOCALE[safeLocale],
       type: 'website',
+      images: [
+        {
+          url: SITE_OG_IMAGE,
+          width: 1200,
+          height: 630,
+          alt: `${siteName} preview image`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteName,
+      description,
+      images: [SITE_OG_IMAGE],
     },
   };
 }

@@ -62,8 +62,12 @@ Chinese Name Generator is a Next.js 16 application with a dual-mode UI (Modern +
 - Avoid heavy dependencies and dynamic imports unless a component is only used conditionally.
 
 ## SEO
-- Root metadata configured in `app/layout.tsx` with `metadataBase`.
-- Per-locale metadata + hreflang alternates in `app/[locale]/layout.tsx`.
-- Mode-specific metadata in `app/[locale]/(main)/modern/layout.tsx` and `app/[locale]/(main)/historical/layout.tsx`.
-- `app/sitemap.ts` and `app/robots.ts` generate `sitemap.xml` and `robots.txt`.
-
+- Root metadata in `app/layout.tsx` now centers on the target keyword **"best Chinese name generator"** (title, description, keywords, OG/Twitter, robots, manifest, icons).
+- Per-locale metadata + hreflang alternates in `app/[locale]/layout.tsx` include locale keyword arrays and social preview images.
+- Mode-specific metadata in `app/[locale]/(main)/modern/layout.tsx` and `app/[locale]/(main)/historical/layout.tsx` now includes route-level keyword sets, canonical URLs, and OG/Twitter cards.
+- JSON-LD is emitted at two levels:
+  - organization-level schema in `app/layout.tsx`
+  - website + web application schema in `app/[locale]/(main)/layout.tsx`
+- `app/sitemap.ts` now includes root + locale mode routes with priority/frequency metadata.
+- `app/robots.ts` now exposes host + sitemap and keeps API routes excluded from crawling.
+- `app/manifest.ts` adds web manifest metadata for search/social platform consistency.

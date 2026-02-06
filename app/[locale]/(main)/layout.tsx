@@ -1,6 +1,12 @@
+﻿import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { SITE_NAME, SITE_URL, toSafeLocale } from '@/lib/seo';
+import {
+  PRIMARY_SEO_KEYWORD,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  toSafeLocale,
+} from '@/lib/seo';
 
 interface Props {
   children: React.ReactNode;
@@ -10,13 +16,30 @@ interface Props {
 export default async function MainLayout({ children, params }: Props) {
   const { locale } = await params;
   const safeLocale = toSafeLocale(locale);
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME[safeLocale],
-    url: `${SITE_URL}/${safeLocale}`,
-    inLanguage: safeLocale,
-  };
+  const localeUrl = `${SITE_URL}/${safeLocale}`;
+
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME[safeLocale],
+      url: localeUrl,
+      inLanguage: safeLocale,
+      description: SITE_DESCRIPTION[safeLocale],
+      keywords: PRIMARY_SEO_KEYWORD,
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebApplication',
+      name: SITE_NAME[safeLocale],
+      url: localeUrl,
+      inLanguage: safeLocale,
+      description: SITE_DESCRIPTION[safeLocale],
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript. Requires HTML5.',
+    },
+  ];
 
   return (
     <div className="flex min-h-screen flex-col font-sans">

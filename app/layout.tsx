@@ -1,10 +1,18 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { Noto_Sans, Noto_Sans_Mono, Noto_Serif } from 'next/font/google';
 import Script from 'next/script';
 import { getLocale } from 'next-intl/server';
+import {
+  PRIMARY_SEO_KEYWORD,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_OG_IMAGE,
+  SITE_URL,
+} from '@/lib/seo';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://chinese-name-gen.vercel.app';
+const BASE_LOCALE = 'en' as const;
 
 const displayFont = Noto_Serif({
   variable: '--font-headline',
@@ -25,28 +33,65 @@ const monoFont = Noto_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: 'Chinese Name Generator | Authentic AI-Powered Names',
-  description: 'Create meaningful, culturally accurate Chinese names with AI. Explore historical legends from the Qin, Han, and Tang dynasties.',
-  keywords: ['Chinese name', 'name generator', 'historical figures', 'Chinese culture', 'AI names', 'pinyin'],
-  authors: [{ name: 'NameGen Team' }],
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME[BASE_LOCALE],
+    template: `%s | ${SITE_NAME[BASE_LOCALE]}`,
+  },
+  description: SITE_DESCRIPTION[BASE_LOCALE],
+  applicationName: SITE_NAME[BASE_LOCALE],
+  keywords: SITE_KEYWORDS[BASE_LOCALE],
+  alternates: {
+    canonical: '/en',
+  },
   openGraph: {
-    title: 'Chinese Name Generator | Find Your Identity',
-    description: 'Generate meaningful Chinese names using AI or explore historical figures from across dynasties.',
-    url: siteUrl,
-    siteName: 'Chinese Name Generator',
+    title: SITE_NAME[BASE_LOCALE],
+    description: SITE_DESCRIPTION[BASE_LOCALE],
+    url: '/en',
+    siteName: SITE_NAME[BASE_LOCALE],
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: SITE_OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME[BASE_LOCALE]} preview image`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chinese Name Generator | Authentic AI Names',
-    description: 'Create meaningful Chinese names with AI and explore history.',
+    title: SITE_NAME[BASE_LOCALE],
+    description: SITE_DESCRIPTION[BASE_LOCALE],
+    images: [SITE_OG_IMAGE],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+    },
   },
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
+    shortcut: '/favicon.ico',
+  },
+};
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: SITE_NAME[BASE_LOCALE],
+  url: SITE_URL,
+  description: SITE_DESCRIPTION[BASE_LOCALE],
+  keywords: PRIMARY_SEO_KEYWORD,
 };
 
 export default async function RootLayout(
@@ -57,6 +102,12 @@ export default async function RootLayout(
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${displayFont.variable} ${bodyFont.variable} ${monoFont.variable} antialiased`}>
+        <Script
+          id="organization-jsonld"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Script
           defer
           src="https://umami-ten-khaki-92.vercel.app/script.js"

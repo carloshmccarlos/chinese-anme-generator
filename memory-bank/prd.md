@@ -252,6 +252,7 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 *   Structured data (JSON-LD) for cultural content
 *   Semantic HTML for accessibility
 *   Technical SEO: sitemap.xml, robots.txt, canonical + hreflang alternates per locale
+*   Primary organic keyword focus: **"best Chinese name generator"** (title, description, keywords, and OG/Twitter metadata for EN pages)
 
 ## 9. Risks & Mitigations
 
