@@ -59,8 +59,7 @@ Modern, performant stack optimized for LLM-powered name generation with excellen
 
 | Service | Model | Endpoint |
 |---------|-------|----------|
-| LLM (Name Generation) | `Qwen/Qwen3-VL-235B-A22B-Instruct` | `https://api.siliconflow.cn/v1/chat/completions` |
-| TTS (Pronunciation) | `FunAudioLLM/CosyVoice2-0.5B` | `https://api.siliconflow.cn/v1/audio/speech` |
+| LLM (Name Generation) | `deepseek-ai/DeepSeek-V3.2` | `https://api.siliconflow.cn/v1/chat/completions` |
 
 ```typescript
 // API Client Setup
@@ -133,15 +132,12 @@ chinese-name-generator/
 │   ├── api/
 │   │   ├── generate/
 │   │   │   └── route.ts          # LLM name generation
-│   │   └── tts/
-│   │       └── route.ts          # Text-to-speech
 │   ├── layout.tsx
 │   └── globals.css
 ├── components/
 │   ├── ui/                       # shadcn components
 │   ├── name-card.tsx
 │   ├── name-form.tsx
-│   ├── audio-player.tsx
 │   └── export-button.tsx
 ├── lib/
 │   ├── siliconflow.ts            # API client
@@ -211,7 +207,6 @@ chinese-name-generator/
 | FID | < 100ms |
 | CLS | < 0.1 |
 | LLM Response | < 5s |
-| TTS Response | < 2s |
 | Bundle Size (JS) | < 150KB gzipped |
 
 ---

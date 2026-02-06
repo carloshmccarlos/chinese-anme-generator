@@ -1,114 +1,160 @@
 ﻿'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, ScrollText, Feather } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import { Card, CardContent } from '@/components/ui/card';
 
 export default function LandingPage() {
   const t = useTranslations('landing');
 
   return (
-    <div className="relative min-h-[80vh] flex flex-col justify-center py-20">
-      {/* Background Watermark */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.03] select-none z-0">
-        <div className="font-display text-[20vw] writing-mode-vertical leading-none whitespace-nowrap">
-          中文名
-        </div>
-      </div>
-
-      <div className="container relative z-10 mx-auto px-4">
-        <div className="mx-auto max-w-4xl text-center mb-24">
+    <div className="relative flex min-h-[calc(100vh-8rem)] flex-col justify-center overflow-hidden py-12 md:py-20">
+      {/* Hero Section */}
+      <div className="container relative z-10 mx-auto px-6 md:px-12">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          {/* Left: Typography Hero */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="lg:col-span-7"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-mono uppercase tracking-widest">
-              <Feather className="w-3 h-3" />
-              <span>{t('series')}</span>
+            {/* Vertical Accent Line */}
+            <div className="mb-8 flex items-center gap-4">
+              <div className="h-12 w-px bg-gradient-to-b from-transparent via-primary/60 to-transparent" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary/80">
+                {t('series')}
+              </span>
             </div>
 
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-foreground mb-8 tracking-tight">
+            {/* Main Headline */}
+            <h1 className="font-display text-[clamp(2.8rem,8vw,6rem)] font-light leading-[0.95] tracking-tight text-foreground">
               {t('headline')}
-              <span className="text-primary block mt-2">{t('headlineAccent')}</span>
+              <span className="mt-1 block bg-gradient-to-r from-primary via-primary/85 to-primary/70 bg-clip-text text-transparent">
+                {t('headlineAccent')}
+              </span>
             </h1>
 
-            <p className="font-serif text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <motion.p
+              className="mt-8 max-w-lg font-serif text-lg leading-relaxed text-muted-foreground/90 md:text-xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+            >
               {t('description')}
-            </p>
+            </motion.p>
+
+            {/* Signature Line */}
+            <motion.div
+              className="mt-10 flex items-center gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              <div className="h-px w-16 bg-primary/30" />
+              <span className="font-display text-sm tracking-widest text-primary/70">名</span>
+              <div className="h-px flex-1 max-w-24 bg-primary/20" />
+            </motion.div>
           </motion.div>
-        </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {/* Right: CTA Cards */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            className="flex flex-col gap-4 lg:col-span-5"
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            transition={{ delay: 0.4, duration: 1, ease: [0.22, 1, 0.36, 1] }}
           >
-            <Link href="/modern" className="block group h-full">
-              <Card className="relative h-full overflow-hidden border-none bg-card paper-texture ink-shadow transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-lg">
-                <CardContent className="p-8 md:p-12 h-full flex flex-col justify-between space-y-8">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <Sparkles className="w-24 h-24 text-primary" />
-                  </div>
+            {/* Modern Card */}
+            <Link href="/modern" className="group block">
+              <div className="relative overflow-hidden rounded-xl border border-white/40 bg-white/[0.06] p-6 backdrop-blur-md transition-all duration-500 hover:border-primary/30 hover:bg-white/[0.12] md:p-8">
+                {/* Glass Sheen */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.15] via-transparent to-transparent opacity-60" />
 
-                  <div className="relative z-10">
-                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">
+                {/* Decorative Character */}
+                <div className="absolute -right-4 -top-4 font-display text-[8rem] font-light leading-none text-primary/[0.04] transition-all duration-700 group-hover:text-primary/[0.08]">
+                  今
+                </div>
+
+                <div className="relative z-10">
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/80" />
+                    <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-primary/75">
                       {t('cardModern.label')}
                     </span>
-                    <h2 className="font-display text-3xl md:text-4xl mb-4 group-hover:text-primary transition-colors">
-                      {t('cardModern.title')}
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('cardModern.description')}
-                    </p>
                   </div>
 
-                  <div className="relative z-10 flex items-center text-sm font-medium uppercase tracking-widest text-foreground group-hover:text-primary transition-colors">
+                  <h2 className="mb-2 font-display text-2xl tracking-tight text-foreground transition-colors group-hover:text-primary md:text-3xl">
+                    {t('cardModern.title')}
+                  </h2>
+
+                  <p className="mb-6 text-sm leading-relaxed text-muted-foreground/80">
+                    {t('cardModern.description')}
+                  </p>
+
+                  <div className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-primary/90 transition-all group-hover:gap-3">
                     {t('cardModern.action')}
-                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Link>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            <Link href="/historical" className="block group h-full">
-              <Card className="relative h-full overflow-hidden border-none bg-card paper-texture ink-shadow transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-lg">
-                <CardContent className="p-8 md:p-12 h-full flex flex-col justify-between space-y-8">
-                  <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                    <ScrollText className="w-24 h-24 text-primary" />
-                  </div>
+            {/* Historical Card */}
+            <Link href="/historical" className="group block">
+              <div className="relative overflow-hidden rounded-xl border border-white/40 bg-white/[0.06] p-6 backdrop-blur-md transition-all duration-500 hover:border-primary/30 hover:bg-white/[0.12] md:p-8">
+                {/* Glass Sheen */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/[0.15] via-transparent to-transparent opacity-60" />
 
-                  <div className="relative z-10">
-                    <span className="text-xs font-mono uppercase tracking-[0.3em] text-primary mb-4 block">
+                {/* Decorative Character */}
+                <div className="absolute -right-4 -top-4 font-display text-[8rem] font-light leading-none text-primary/[0.04] transition-all duration-700 group-hover:text-primary/[0.08]">
+                  古
+                </div>
+
+                <div className="relative z-10">
+                  <div className="mb-3 flex items-center gap-3">
+                    <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary/80" />
+                    <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-primary/75">
                       {t('cardHistorical.label')}
                     </span>
-                    <h2 className="font-display text-3xl md:text-4xl mb-4 group-hover:text-primary transition-colors">
-                      {t('cardHistorical.title')}
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {t('cardHistorical.description')}
-                    </p>
                   </div>
 
-                  <div className="relative z-10 flex items-center text-sm font-medium uppercase tracking-widest text-foreground group-hover:text-primary transition-colors">
+                  <h2 className="mb-2 font-display text-2xl tracking-tight text-foreground transition-colors group-hover:text-primary md:text-3xl">
+                    {t('cardHistorical.title')}
+                  </h2>
+
+                  <p className="mb-6 text-sm leading-relaxed text-muted-foreground/80">
+                    {t('cardHistorical.description')}
+                  </p>
+
+                  <div className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.2em] text-primary/90 transition-all group-hover:gap-3">
                     {t('cardHistorical.action')}
-                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Link>
           </motion.div>
         </div>
       </div>
+
+      {/* Bottom Flourish */}
+      <motion.div
+        className="container relative z-10 mx-auto mt-16 flex justify-center px-6 md:mt-24"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
+      >
+        <div className="flex items-center gap-8 text-[9px] font-mono uppercase tracking-[0.4em] text-muted-foreground/60">
+          <span>踏</span>
+          <div className="h-px w-8 bg-primary/20" />
+          <span>雪</span>
+          <div className="h-px w-8 bg-primary/20" />
+          <span>寻</span>
+          <div className="h-px w-8 bg-primary/20" />
+          <span>梅</span>
+        </div>
+      </motion.div>
     </div>
   );
 }

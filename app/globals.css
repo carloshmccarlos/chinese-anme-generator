@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,14 +8,11 @@
   --font-sans: var(--font-body);
   --font-mono: var(--font-code);
   --font-display: var(--font-headline);
-  
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-  
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-muted: var(--muted);
@@ -28,97 +25,74 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-
-  --radius-none: 0;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
 }
 
 :root {
-  /* Rice Paper / Warm White foundation */
-  --background: #F4F1EA;
-  /* Deep Ink Black - slightly warm */
-  --foreground: #2A2420;
-
-  /* Cinnabar (Seal Red) - Deep, rich, authoritative */
-  --primary: #9A2A2A; 
-  --primary-foreground: #F9F7F2;
-
-  /* Slightly darker paper for cards */
-  --card: #FDFBF7;
-  --card-foreground: #2A2420;
-
-  /* Dried Ink border */
-  --border: #E6DCCD;
-  --input: #E6DCCD;
-  --ring: #9A2A2A;
-
-  /* Faded Ink */
-  --muted: #E8E1D5;
-  --muted-foreground: #8C8070;
-
-  /* Gold/Silk Accents */
-  --accent: #E6D5B8;
-  --accent-foreground: #2A2420;
-
-  /* Secondary Paper tone */
-  --secondary: #EBE5D9;
-  --secondary-foreground: #2A2420;
-
-  --destructive: #B91C1C;
-  --destructive-foreground: #F9F7F2;
-
-  --popover: #FDFBF7;
-  --popover-foreground: #2A2420;
-}
-
-.dark {
-  /* Slate/Ink Stone background */
-  --background: #1C1917;
-  /* Off-white ink */
-  --foreground: #E8E1D5;
-
-  /* Bright Vermilion for contrast on dark */
-  --primary: #C53B3B;
-  --primary-foreground: #1C1917;
-
-  --card: #262220;
-  --card-foreground: #E8E1D5;
-
-  --border: #443B35;
-  --input: #443B35;
-  --ring: #C53B3B;
-
-  --muted: #2E2925;
-  --muted-foreground: #A89F91;
-
-  --accent: #3D352E;
-  --accent-foreground: #E8E1D5;
-
-  --secondary: #332D28;
-  --secondary-foreground: #E8E1D5;
-
-  --destructive: #EF4444;
-  --destructive-foreground: #1C1917;
-
-  --popover: #262220;
-  --popover-foreground: #E8E1D5;
+  --background: #f7f4f4;
+  --foreground: #2d374c;
+  --primary: #a43f67;
+  --primary-foreground: #fff8fb;
+  --card: #ffffff;
+  --card-foreground: #2d374c;
+  --border: #e2dbe2;
+  --input: #e2dbe2;
+  --ring: #a43f67;
+  --muted: #efeaee;
+  --muted-foreground: #757e90;
+  --accent: #f6e0e8;
+  --accent-foreground: #56263d;
+  --secondary: #f3edf2;
+  --secondary-foreground: #35465f;
+  --destructive: #c82653;
+  --destructive-foreground: #fff7fa;
+  --popover: #fcfafc;
+  --popover-foreground: #2d374c;
 }
 
 @layer utilities {
+  .font-display {
+    font-family: var(--font-headline), ui-serif, serif;
+    letter-spacing: 0.035em;
+  }
+
   .writing-mode-vertical {
     writing-mode: vertical-rl;
   }
-  .font-display {
-    font-family: var(--font-headline), ui-serif, serif;
-    letter-spacing: 0.05em;
-  }
+
   .ink-shadow {
-    box-shadow: 0 4px 20px -2px rgba(42, 36, 32, 0.12);
+    box-shadow:
+      0 30px 62px -46px rgba(36, 46, 62, 0.52),
+      0 8px 24px -18px rgba(164, 63, 103, 0.28);
   }
+
   .paper-texture {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image:
+      radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.45), transparent 48%),
+      radial-gradient(circle at 84% 80%, rgba(245, 235, 242, 0.28), transparent 42%);
+  }
+
+  .snow-panel {
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.12)),
+      radial-gradient(circle at 96% 4%, rgba(164, 63, 103, 0.13), transparent 45%);
+    border: 1px solid rgba(255, 255, 255, 0.56);
+    backdrop-filter: blur(10px);
+  }
+
+  .plum-ring {
+    border: 1px solid rgba(164, 63, 103, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.34);
+  }
+
+  .snow-divider {
+    border-color: rgba(164, 63, 103, 0.2);
+    background: linear-gradient(90deg, transparent, rgba(164, 63, 103, 0.2), transparent);
+  }
+
+  .plum-chip {
+    background: linear-gradient(135deg, rgba(164, 63, 103, 0.16), rgba(164, 63, 103, 0.05));
+    border: 1px solid rgba(164, 63, 103, 0.32);
+    color: color-mix(in srgb, var(--foreground) 70%, var(--primary) 30%);
   }
 }
 
@@ -126,13 +100,59 @@
   * {
     @apply border-border;
   }
+
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  body[data-scroll-locked] {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    --removed-body-scroll-bar-size: 0px;
+  }
+
   body {
     @apply bg-background font-sans text-foreground selection:bg-primary/20 selection:text-primary;
     font-feature-settings: "palt";
-    position: relative;
     font-family: var(--font-body), system-ui, -apple-system, "Segoe UI", Roboto,
       "Helvetica Neue", Arial, "Noto Sans", "Apple SD Gothic Neo", "Malgun Gothic",
       "Yu Gothic", Meiryo, sans-serif;
+    background:
+      linear-gradient(170deg, rgba(251, 248, 250, 0.7), rgba(248, 244, 248, 0.7)),
+      url("/backgroud.png");
+    background-position: center, center top;
+    background-size: auto, cover;
+    background-repeat: repeat, no-repeat;
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 18% 35%, rgba(255, 255, 255, 0.54), transparent 30%),
+      radial-gradient(circle at 82% 21%, rgba(255, 255, 255, 0.52), transparent 30%),
+      linear-gradient(90deg,
+        rgba(255, 255, 255, 0.34),
+        transparent 18%,
+        transparent 82%,
+        rgba(255, 255, 255, 0.34));
+    opacity: 0.9;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    mix-blend-mode: multiply;
   }
 
   html[lang="zh"] body,
@@ -150,29 +170,5 @@
   html[lang="ko"] body,
   html[lang="ko"] .font-display {
     font-family: var(--font-body), "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
-  }
-  
-  /* Global page grain */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    pointer-events: none;
-    z-index: -1;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
-    mix-blend-mode: multiply;
-  }
-
-  /* Subtle vignette */
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background: radial-gradient(circle at center, transparent 0%, rgba(28, 25, 23, 0.03) 100%);
   }
 }

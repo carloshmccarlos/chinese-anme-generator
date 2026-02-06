@@ -9,8 +9,6 @@ export const siliconFlow = new OpenAI({
   baseURL: 'https://api.siliconflow.cn/v1',
 });
 
-// For TTS and other specific models if needed
 export const SILICONFLOW_MODELS = {
-  CHAT: 'Qwen/Qwen3-VL-235B-A22B-Instruct', // Default chat model
-  TTS: 'fishaudio/fish-speech-1.5', // Example TTS model
+  CHAT: 'deepseek-ai/DeepSeek-V3.2',
 } as const;

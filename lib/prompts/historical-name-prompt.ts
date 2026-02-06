@@ -1,11 +1,11 @@
-import type { GenerateHistoricalNameRequest } from '@/types/api';
+﻿import type { GenerateHistoricalNameRequest } from '@/types/api';
 import type { LanguagePreference } from '@/types/preferences';
 
 const OUTPUT_LANGUAGE: Record<LanguagePreference, string> = {
   en: 'English',
-  zh: 'Simplified Chinese (简体中文)',
-  ja: 'Japanese (日本語)',
-  ko: 'Korean (한국어)',
+  zh: 'Simplified Chinese',
+  ja: 'Japanese',
+  ko: 'Korean',
 };
 
 const DYNASTY_LABEL: Record<GenerateHistoricalNameRequest['dynasty'], string> = {
@@ -13,7 +13,7 @@ const DYNASTY_LABEL: Record<GenerateHistoricalNameRequest['dynasty'], string> = 
   'Qin-Han': 'Qin-Han',
   'Three Kingdoms': 'Three Kingdoms',
   'Wei-Jin Northern and Southern Dynasties': 'Wei-Jin / Northern & Southern Dynasties',
-  'Sui-Tang': 'Tang',
+  'Sui-Tang': 'Sui-Tang',
   'Five Dynasties and Ten Kingdoms': 'Five Dynasties and Ten Kingdoms',
   Song: 'Song',
   Any: 'Any (Shang/Zhou through Song)',
@@ -23,6 +23,18 @@ const LENGTH_LABEL: Record<GenerateHistoricalNameRequest['length'], string> = {
   single: 'One character',
   double: 'Two characters',
   any: 'Any',
+};
+
+const getSurnameInstruction = (params: GenerateHistoricalNameRequest): string => {
+  if (params.surnameType === 'single') {
+    return '- Surname constraint: Use ONLY single-character surnames.';
+  }
+
+  if (params.surnameType === 'double') {
+    return '- Surname constraint: Use ONLY real double-character surnames (for example: 司马, 诸葛, 夏侯, 上官, 欧阳).';
+  }
+
+  return '- Surname constraint: no restriction.';
 };
 
 export const generateHistoricalNamePrompt = (
@@ -37,12 +49,13 @@ User preferences:
 - Dynasty: ${DYNASTY_LABEL[params.dynasty]}
 - Style: ${params.style}
 - Given name length preference: ${LENGTH_LABEL[params.length]}
+${getSurnameInstruction(params)}
 ${params.realName ? `- Personal context: The user's real name is "${params.realName}"` : ''}
 
 Primary objective:
 - Select EXACTLY THREE real historical figures.
-${params.realName ? `- Rank them by pronunciation similarity to the user's real name.` : ''}
-${params.realName ? `- Use the Chinese name pronunciation (pinyin with tone marks) to judge similarity.` : ''}
+${params.realName ? '- Rank them by pronunciation similarity to the user real name.' : ''}
+${params.realName ? '- Use pinyin with tone marks to judge similarity.' : ''}
 
 Constraints:
 - Do NOT invent or fictionalize any person.
@@ -51,10 +64,11 @@ Constraints:
 - Ensure all historical facts are accurate.
 - Select ONLY real historical figures. If uncertain about a fact, choose a different figure rather than guessing.
 - Use the full formal historical name (surname + given name). Do NOT use nicknames, courtesy names only, or diminutives.
+- If surname constraint is set, every returned name MUST satisfy it.
 - If a dynasty match is not exact, choose the closest appropriate dynasty and state it.
 - If pinyin is unknown, leave it as an empty string.
 - Output language: ${OUTPUT_LANGUAGE[locale]}. Write ALL narrative fields ("story", "tags", "matchReason") in this language only.
-- Story length: ${depth === 'brief' ? '1–2 sentences' : '3–4 sentences'}.
+- Story length: ${depth === 'brief' ? '1-2 sentences' : '3-4 sentences'}.
 - Output rules (STRICT): Output VALID JSON ONLY. Do NOT use markdown. Do NOT add commentary outside JSON.
 - Use the exact schema below. Do NOT add extra keys. Select EXACTLY THREE names.
 ${params.length === 'double' ? '- Given name length preference is two characters: avoid figures whose given name is only one character when possible.' : ''}

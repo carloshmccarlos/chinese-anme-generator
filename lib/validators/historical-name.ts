@@ -1,5 +1,9 @@
 import { z } from 'zod';
-import { explanationDepthSchema, languageSchema } from '@/lib/validators/common';
+import {
+  explanationDepthSchema,
+  languageSchema,
+  surnameTypeSchema,
+} from '@/lib/validators/common';
 
 export const historicalNameRequestSchema = z.object({
   realName: z.string().optional(),
@@ -16,6 +20,7 @@ export const historicalNameRequestSchema = z.object({
   ]),
   style: z.string(),
   length: z.enum(['single', 'double', 'any']),
+  surnameType: surnameTypeSchema.optional(),
   locale: languageSchema.optional(),
   explanationDepth: explanationDepthSchema.optional(),
 });

@@ -43,13 +43,13 @@ export function SettingsPanel() {
         <Button
           variant="ghost"
           size="icon"
-          className="rounded-md border border-transparent hover:border-primary/60 hover:bg-accent/40"
+          className="rounded-lg border border-primary/15 bg-white/35 hover:border-primary/55 hover:bg-accent/35"
         >
           <Settings className="h-5 w-5" />
           <span className="sr-only">Open settings</span>
         </Button>
       </SheetTrigger>
-      <SheetContent className="border-border bg-card/90 font-sans sm:max-w-md">
+      <SheetContent className="border-primary/20 bg-card/92 font-sans sm:max-w-md">
         <motion.div
           key={isOpen ? 'open' : 'closed'}
           initial={{ opacity: 0, y: 12 }}
@@ -92,7 +92,7 @@ export function SettingsPanel() {
                   />
                   <Label
                     htmlFor={item.value}
-                    className="flex items-center justify-between rounded-md border-2 border-muted bg-popover/80 px-4 py-3 text-sm font-medium transition hover:border-primary/60 hover:bg-accent/60 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    className="flex items-center justify-between rounded-lg border border-border/70 bg-popover/85 px-4 py-3 text-sm font-medium transition hover:border-primary/60 hover:bg-accent/45 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                   >
                     <span>{item.label}</span>
                     <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground">
@@ -128,7 +128,7 @@ export function SettingsPanel() {
                   />
                   <Label
                     htmlFor={item.value}
-                    className="flex flex-col gap-2 rounded-md border-2 border-muted bg-card/80 px-4 py-3 text-sm transition hover:border-primary/60 hover:bg-accent/50 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                    className="flex flex-col gap-2 rounded-lg border border-border/70 bg-card/80 px-4 py-3 text-sm transition hover:border-primary/60 hover:bg-accent/42 peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                   >
                     <span className="font-medium">{item.title}</span>
                     <span className="text-xs text-muted-foreground">

@@ -2,11 +2,8 @@
 
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Play } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { cn } from '@/lib/utils';
 import { Card, CardContent } from '@/components/ui/card';
-import { useTTS } from '@/hooks/use-tts';
 import { ExportButton } from '@/components/export-button';
 import type { GeneratedHistoricalName } from '@/types/name';
 
@@ -16,7 +13,6 @@ interface Props {
 
 export function HistoricalNameCard({ name }: Props) {
     const cardRef = useRef<HTMLDivElement>(null);
-    const { speak, isLoading: isSpeaking } = useTTS();
     const t = useTranslations('historical');
 
     return (
@@ -26,9 +22,9 @@ export function HistoricalNameCard({ name }: Props) {
             className="relative h-full group"
             ref={cardRef}
         >
-            <Card className="relative h-full border-none bg-[#FDFBF7] paper-texture ink-shadow overflow-hidden transition-transform duration-500 hover:-translate-y-1">
+            <Card className="relative h-full overflow-hidden border border-white/58 bg-white/12 paper-texture snow-panel ink-shadow transition-transform duration-500 hover:-translate-y-1">
                 {/* Inner Border Frame */}
-                <div className="absolute inset-4 border border-primary/5 rounded-sm pointer-events-none z-20" />
+                <div className="pointer-events-none absolute inset-4 z-20 rounded-sm border border-primary/12" />
 
                 <CardContent className="flex h-full flex-col p-8 relative z-10 w-full h-full">
                     {/* Top Section */}
@@ -36,7 +32,7 @@ export function HistoricalNameCard({ name }: Props) {
                         {/* Horizontal Tags - Traditional Stamp Style */}
                         <div className="flex flex-row gap-2">
                             {/* Dynasty Stamp */}
-                            <div className="flex items-center justify-center border border-primary/30 bg-primary/5 px-2 py-1 rounded-[2px]">
+                            <div className="flex items-center justify-center rounded-[2px] border border-primary/34 bg-primary/14 px-2 py-1">
                                 <span className="text-[10px] font-mono tracking-[0.15em] text-primary/80 uppercase">
                                     {name.dynasty}
                                 </span>
@@ -46,7 +42,7 @@ export function HistoricalNameCard({ name }: Props) {
                             {name.tags.slice(0, 2).map((tag) => (
                                 <div
                                     key={tag}
-                                    className="flex items-center justify-center border border-muted-foreground/20 px-2 py-1 rounded-[2px]"
+                                    className="flex items-center justify-center rounded-[2px] border border-primary/22 bg-white/24 px-2 py-1"
                                 >
                                     <span className="text-[10px] font-mono tracking-[0.15em] text-muted-foreground/70 uppercase">
                                         {tag}
@@ -55,18 +51,6 @@ export function HistoricalNameCard({ name }: Props) {
                             ))}
                         </div>
 
-                        {/* Audio Play Button - Explicit & Excluded from Export */}
-                        <button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                speak(name.name);
-                            }}
-                            disabled={isSpeaking}
-                            className="export-exclude flex items-center justify-center w-8 h-8 rounded-full border border-primary/20 bg-primary/5 text-primary/60 transition-all duration-300 hover:bg-primary/10 hover:text-primary active:scale-95 group/audio"
-                            aria-label="Play pronunciation"
-                        >
-                            <Play className={cn("w-3.5 h-3.5 ml-0.5 fill-current", isSpeaking && "animate-pulse text-primary")} />
-                        </button>
                     </div>
 
                     {/* Center Section: Name */}
@@ -85,9 +69,9 @@ export function HistoricalNameCard({ name }: Props) {
                     </div>
 
                     {/* Bottom Section: Story/Details */}
-                    <div className="mt-auto pt-6 border-t border-primary/5 relative">
+                    <div className="relative mt-auto border-t border-primary/10 pt-6">
                         {/* Corner decoration for the text block */}
-                        <div className="absolute top-6 left-0 w-2 h-2 border-t border-l border-primary/20" />
+                        <div className="absolute left-0 top-6 h-2 w-2 border-l border-t border-primary/25" />
 
                         <div className="space-y-4 pl-3">
                             <h3 className="text-[9px] font-mono uppercase tracking-[0.25em] text-primary/40 mb-1">

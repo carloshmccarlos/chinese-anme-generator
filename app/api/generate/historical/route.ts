@@ -1,15 +1,16 @@
-import { NextResponse } from 'next/server';
+﻿import { NextResponse } from 'next/server';
 
 export const runtime = 'nodejs';
 
-import { generateHistoricalNamePrompt } from '@/lib/prompts/historical-name-prompt';
-import { HISTORICAL_SYSTEM_PROMPT } from '@/lib/prompts/historical-system-prompt';
-import { siliconFlow, SILICONFLOW_MODELS } from '@/lib/siliconflow';
-import { historicalNameRequestSchema } from '@/lib/validators/historical-name';
+import { detectSurnameType } from '@/lib/double-surnames';
 import {
   normalizeTags,
   phoneticSimilarity,
 } from '@/lib/historical-candidates';
+import { generateHistoricalNamePrompt } from '@/lib/prompts/historical-name-prompt';
+import { HISTORICAL_SYSTEM_PROMPT } from '@/lib/prompts/historical-system-prompt';
+import { siliconFlow, SILICONFLOW_MODELS } from '@/lib/siliconflow';
+import { historicalNameRequestSchema } from '@/lib/validators/historical-name';
 import type { GenerateHistoricalNameRequest } from '@/types/api';
 import type { GeneratedHistoricalName } from '@/types/name';
 import type { LanguagePreference } from '@/types/preferences';
@@ -36,7 +37,7 @@ const countCjkChars = (value: string): number => {
 };
 
 const hasNicknamePrefix = (value: string): boolean => {
-  return /^[阿小老]/.test(value);
+  return /^[\u963f\u5c0f\u8001]/.test(value);
 };
 
 const normalizeString = (value: unknown): string => {
@@ -45,16 +46,16 @@ const normalizeString = (value: unknown): string => {
 
 const HISTORICAL_TAG_FALLBACK: Record<LanguagePreference, string> = {
   en: 'Historical',
-  zh: '历史',
-  ja: '歴史',
-  ko: '역사',
+  zh: 'Historical',
+  ja: 'Historical',
+  ko: 'Historical',
 };
 
 const DEFAULT_MATCH_REASON: Record<LanguagePreference, string> = {
   en: 'Matched by pronunciation similarity.',
-  zh: '根据读音相似度匹配。',
-  ja: '発音の類似性で一致しました。',
-  ko: '발음 유사도로 매칭했습니다.',
+  zh: 'Matched by pronunciation similarity.',
+  ja: 'Matched by pronunciation similarity.',
+  ko: 'Matched by pronunciation similarity.',
 };
 
 const toGeneratedName = (
@@ -68,12 +69,37 @@ const toGeneratedName = (
     return null;
   }
 
-  if (hasNicknamePrefix(nameValue)) {
+  const name = nameValue.replace(/\s+/g, '');
+  if (hasNicknamePrefix(name)) {
     return null;
   }
 
-  const cjkCount = countCjkChars(nameValue);
+  const cjkCount = countCjkChars(name);
   if (cjkCount < minCjkChars) {
+    return null;
+  }
+
+  const surnameTypeDetected = detectSurnameType(name);
+  if (surnameTypeDetected === 'unknown') {
+    return null;
+  }
+
+  if (params.surnameType && surnameTypeDetected !== params.surnameType) {
+    return null;
+  }
+
+  const surnameCharCount = surnameTypeDetected === 'double' ? 2 : 1;
+  const givenNameCharCount = cjkCount - surnameCharCount;
+
+  if (givenNameCharCount < 1) {
+    return null;
+  }
+
+  if (params.length === 'single' && givenNameCharCount !== 1) {
+    return null;
+  }
+
+  if (params.length === 'double' && givenNameCharCount !== 2) {
     return null;
   }
 
@@ -99,7 +125,7 @@ const toGeneratedName = (
 
   const tags = normalizeTags(raw.tags, [params.style, HISTORICAL_TAG_FALLBACK[locale]]);
 
-  const candidateText = pinyinValue || nameValue;
+  const candidateText = pinyinValue || name;
   const similarity = params.realName ? phoneticSimilarity(params.realName, candidateText) : 0;
   const matchScore = params.realName ? Math.round(similarity * 100) : 0;
   const matchReason = normalizeString(raw.matchReason)
@@ -107,7 +133,7 @@ const toGeneratedName = (
 
   return {
     id: `${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
-    name: nameValue,
+    name,
     pinyin: pinyinValue,
     dynasty: dynastyValue,
     story: storyValue,
@@ -149,48 +175,53 @@ export async function POST(req: Request) {
       max_tokens: 2048,
     } as unknown as ChatCompletionCreateParamsNonStreaming;
 
-    const response = await siliconFlow.chat.completions.create(completionRequest);
+    const TARGET_COUNT = 3;
+    const MAX_ATTEMPTS = validatedData.surnameType === 'double' ? 8 : 4;
+    const byKey = new Map<string, GeneratedHistoricalName>();
 
-    const content = response.choices[0].message.content;
-    if (!content) {
-      throw new Error('Empty response from LLM');
-    }
+    for (let attempt = 0; attempt < MAX_ATTEMPTS && byKey.size < TARGET_COUNT; attempt += 1) {
+      const response = await siliconFlow.chat.completions.create(completionRequest);
+      const content = response.choices[0].message.content;
+      if (!content) {
+        continue;
+      }
 
-    const parsed = JSON.parse(content) as Record<string, unknown>;
-    const rawList = Array.isArray(parsed.names) ? parsed.names : [];
-    const rawItems = rawList.filter((item): item is Record<string, unknown> => Boolean(item && typeof item === 'object'));
+      let parsed: Record<string, unknown>;
+      try {
+        parsed = JSON.parse(content) as Record<string, unknown>;
+      } catch {
+        continue;
+      }
 
-    const strictMin = validatedData.length === 'double' ? 3 : 2;
-    const strictNames = rawItems
-      .map((raw) => toGeneratedName(validatedData, raw, strictMin, locale))
-      .filter((item): item is GeneratedHistoricalName => Boolean(item));
+      const rawList = Array.isArray(parsed.names) ? parsed.names : [];
+      const rawItems = rawList.filter((item): item is Record<string, unknown> => Boolean(item && typeof item === 'object'));
 
-    let selectedNames = strictNames;
-
-    if (selectedNames.length < 3 && validatedData.length === 'double') {
-      const relaxedNames = rawItems
-        .map((raw) => toGeneratedName(validatedData, raw, 2, locale))
+      const strictMin = validatedData.length === 'double' ? 3 : 2;
+      const strictNames = rawItems
+        .map((raw) => toGeneratedName(validatedData, raw, strictMin, locale))
         .filter((item): item is GeneratedHistoricalName => Boolean(item));
 
-      const byKey = new Map<string, GeneratedHistoricalName>();
-      [...strictNames, ...relaxedNames].forEach((item) => {
+      strictNames.forEach((item) => {
         const key = `${item.name}-${item.pinyin}`;
         if (!byKey.has(key)) {
           byKey.set(key, item);
         }
       });
-      selectedNames = Array.from(byKey.values());
     }
 
+    const selectedNames = Array.from(byKey.values());
     const sortedNames = validatedData.realName
       ? [...selectedNames].sort((a, b) => (b.matchScore ?? 0) - (a.matchScore ?? 0))
       : selectedNames;
 
-    if (!sortedNames.length) {
-      throw new Error('Insufficient historical names returned');
+    if (sortedNames.length < TARGET_COUNT) {
+      return NextResponse.json(
+        { error: `Could only generate ${sortedNames.length} valid names after ${MAX_ATTEMPTS} attempts.` },
+        { status: 422 }
+      );
     }
 
-    return NextResponse.json({ names: sortedNames.slice(0, 3) });
+    return NextResponse.json({ names: sortedNames.slice(0, TARGET_COUNT) });
   } catch (error: unknown) {
     console.error('Historical API Error:', error);
     const message = error instanceof Error ? error.message : 'Internal Server Error';

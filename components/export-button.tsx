@@ -22,7 +22,7 @@ export function ExportButton({ targetRef, fileName = 'chinese-name' }: Props) {
     try {
       const dataUrl = await toPng(targetRef.current, {
         cacheBust: true,
-        backgroundColor: 'transparent',
+        backgroundColor: '#f7f4f4',
         filter: (node) => {
           const exclusionClasses = ['export-exclude'];
           return !exclusionClasses.some((classname) => node.classList?.contains(classname));

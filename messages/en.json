@@ -43,6 +43,7 @@
     }
   },
   "modern": {
+    "back": "Back",
     "label": "Modern Studio",
     "title": "Craft a contemporary Chinese name.",
     "description": "Select the tone, style, and rhythm. We'll generate names that feel natural to speak and meaningful to keep.",
@@ -52,6 +53,7 @@
     "empty": "Your journey begins here. Fill out the form to generate names."
   },
   "historical": {
+    "back": "Back",
     "label": "Historical Archive",
     "title": "Forge a historical Chinese name.",
     "description": "Choose a dynasty, style, and rhythm to shape an AI-crafted historical name.",
@@ -61,7 +63,7 @@
     "tagsLabel": "Tone Tags",
     "sourceLabel": "Source (Wikipedia)",
     "matchLabel": "Pronunciation Match",
-    "sectionTitle": "Generated Records",
+    "sectionTitle": "Generated Results",
     "sectionLabel": "Archive Set"
   },
   "forms": {
@@ -87,7 +89,17 @@
       "lengthSingle": "Single Character (e.g. 云)",
       "lengthDouble": "Double Characters (e.g. 若兰)",
       "lengthAny": "Any",
-      "submit": "Generate My Chinese Name"
+      "surnameTypeLabel": "Surname Type (optional)",
+      "surnameTypePlaceholder": "Select surname type",
+      "surnameTypeAny": "No preference",
+      "surnameTypeSingle": "Single surname (1 character)",
+      "surnameTypeDouble": "Double surname (2 characters)",
+      "wantedSurnameLabel": "Wanted Surname (optional)",
+      "wantedSurnamePlaceholder": "e.g. Li / Ouyang",
+      "wantedSurnameDescriptionAny": "Use 1-2 Chinese characters. Pair with surname type for strict validation.",
+      "wantedSurnameDescriptionSingle": "Must be exactly 1 Chinese character in single-surname mode.",
+      "wantedSurnameDescriptionDouble": "Must be exactly 2 Chinese characters in double-surname mode.",
+      "submit": "Generate Name"
     },
     "historical": {
       "eyebrow": "Historical Studio",
@@ -121,7 +133,17 @@
       "lengthSingle": "Single Character (e.g. 云)",
       "lengthDouble": "Double Characters (e.g. 若兰)",
       "lengthAny": "Any",
-      "submit": "Generate Historical Name"
+      "surnameTypeLabel": "Surname Type (optional)",
+      "surnameTypePlaceholder": "Select surname type",
+      "surnameTypeAny": "No preference",
+      "surnameTypeSingle": "Single surname (1 character)",
+      "surnameTypeDouble": "Double surname (2 characters)",
+      "wantedSurnameLabel": "Wanted Surname (optional)",
+      "wantedSurnamePlaceholder": "e.g. Li / Ouyang",
+      "wantedSurnameDescriptionAny": "Use 1-2 Chinese characters. Pair with surname type for strict validation.",
+      "wantedSurnameDescriptionSingle": "Must be exactly 1 Chinese character in single-surname mode.",
+      "wantedSurnameDescriptionDouble": "Must be exactly 2 Chinese characters in double-surname mode.",
+      "submit": "Generate Name"
     }
   },
   "nameCard": {

@@ -1,5 +1,11 @@
 import { z } from 'zod';
-import { explanationDepthSchema, languageSchema } from '@/lib/validators/common';
+import {
+  explanationDepthSchema,
+  languageSchema,
+  surnameTypeSchema,
+  validateSurnamePreference,
+  wantedSurnameSchema,
+} from '@/lib/validators/common';
 
 export const modernNameRequestSchema = z.object({
   realName: z.string().optional(),
@@ -7,8 +13,10 @@ export const modernNameRequestSchema = z.object({
   style: z.string(),
   themes: z.array(z.string()),
   length: z.enum(['single', 'double', 'any']),
-  includeSurname: z.boolean(),
-  surname: z.string().optional(),
+  surnameType: surnameTypeSchema.optional(),
+  wantedSurname: wantedSurnameSchema,
   locale: languageSchema.optional(),
   explanationDepth: explanationDepthSchema.optional(),
+}).superRefine((data, ctx) => {
+  validateSurnamePreference(data, ctx);
 });

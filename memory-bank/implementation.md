@@ -70,6 +70,7 @@
 - [x] Create lib/siliconflow.ts
 - [x] Configure OpenAI client with SiliconFlow baseURL
 - [x] Export typed client instance
+- [x] Switch chat model to `deepseek-ai/DeepSeek-V3.2`
 
 ### 3.2 Type Definitions
 - [x] Create types/name.ts (HistoricalName, ModernName)
@@ -80,12 +81,16 @@
 - [x] Create lib/validators/modern-name.ts
 - [x] Create lib/validators/historical-name.ts
 - [x] Create lib/validators/common.ts
+- [x] Add optional surname mode (`single`/`double`) and Chinese-character-count validation
 
 ### 3.4 LLM Prompts
 - [x] Create lib/prompts/modern-name-prompt.ts
 - [x] Create lib/prompts/system-prompt.ts
 - [ ] Ensure AI narrative language follows UI locale (EN/ZH/JA/KO)
 - [ ] Ensure explanation depth (brief/detailed) is enforced (system prompt must not override brief)
+- [x] Update modern prompt to enforce realistic contemporary names (avoid fictional/novel style)
+- [x] Update historical prompt to respect optional surname mode constraints
+- [x] Enforce strict style-matching instructions in modern + historical prompts
 
 ### 3.5 API Route: Generate Modern Name
 - [x] Create app/api/generate/modern/route.ts
@@ -94,13 +99,14 @@
 - [x] Tighten sampling for JSON compliance (temp/top_p/top_k/min_p/frequency/max_tokens)
 - [x] Parse and return structured response
 - [x] Add error handling
+- [x] Retry generation and aggregate valid unique names to reach 3, otherwise return explicit error
 
-### 3.6 API Route: TTS
-- [x] Create app/api/tts/route.ts
-- [x] Accept pinyin text input
-- [x] Call SiliconFlow TTS API
-- [x] Return audio stream/blob
-- [x] Add error handling
+### 3.6 API Route: TTS (Future)
+- [ ] Re-introduce app/api/tts/route.ts in a future release
+- [ ] Add pinyin text input validation for TTS
+- [ ] Call SiliconFlow TTS API
+- [ ] Return audio stream/blob
+- [ ] Add error handling
 
 ---
 
@@ -118,6 +124,8 @@
 - [x] Remove external validation and source metadata from historical responses
 - [x] Return three historical options per request
 - [x] Rank results by real-name pronunciation similarity when provided
+- [x] Retry/aggregate generation to reach 3 valid constrained results; never relax constraints
+- [x] Reject candidates whose returned style label does not match requested style
 
 ---
 
@@ -148,11 +156,11 @@
 - [x] Add refetch capability
 - [ ] Send locale + explanationDepth preferences with generation requests
 
-### 6.2 TTS Hook
-- [x] Create hooks/use-tts.ts
-- [x] Manage audio playback state
-- [x] Handle audio loading
-- [x] Cache audio URLs
+### 6.2 TTS Hook (Future)
+- [ ] Re-introduce hooks/use-tts.ts in a future release
+- [ ] Manage audio playback state
+- [ ] Handle audio loading
+- [ ] Cache audio URLs
 
 ---
 
@@ -183,6 +191,8 @@
 - [x] Add surname input/toggle (Basic)
 - [x] Add submit button with loading
 - [x] Ensure modern output includes surname (force includeSurname)
+- [x] Add optional surname mode selector (`单姓` / `复姓`) in modern form
+- [x] Validate wanted surname length by mode (1 or 2 Chinese characters)
 
 ### 7.4 Historical Form
 - [x] Create components/historical-name-form.tsx
@@ -192,12 +202,14 @@
 - [x] Replace historical filters with AI generator inputs (real name, gender, dynasty, style, length)
 - [x] Add popularity toggle
 - [x] Add submit button with loading
+- [x] Add optional surname mode selector (`单姓` / `复姓`) in historical form
+- [x] Remove wanted surname input from historical form
 
-### 7.5 Audio Player
-- [x] Create components/audio-player.tsx (Integrated in NameCard)
-- [x] Add play/pause button
-- [x] Add loading indicator
-- [x] Handle audio errors
+### 7.5 Audio Player (Future)
+- [ ] Re-introduce pronunciation player in name cards
+- [ ] Add play/pause button
+- [ ] Add loading indicator
+- [ ] Handle audio errors
 
 ### 7.6 Export Button
 - [x] Create components/export-button.tsx
@@ -262,13 +274,25 @@
 - [ ] Add button hover effects
 - [ ] Add page transitions
 
-### 10.4 Accessibility
+### 10.4 Visual Theme Refresh (`踏雪寻梅`)
+- [x] Rebuild global color tokens for snow/plum palette in `app/globals.css`
+- [x] Add reusable surface/style utilities (`snow-panel`, `plum-ring`, `frost-frame`, `plum-chip`, `snow-divider`)
+- [x] Redesign shell components (`header`, `footer`, mode tabs, settings/language controls)
+- [x] Redesign landing + modern/historical page sections to match theme
+- [x] Retheme name cards, skeletons, and form card surfaces
+- [x] Recompose landing into framed editorial layout inspired by visual reference
+- [x] Set modern preferences form to strict 2-column x 3-row structure (4 selectors + 2 inputs)
+- [x] Apply full-page mist canvas treatment using `public/backgroud.png` + translucent overlays
+- [x] Convert primary card surfaces to transparent glass style across landing, forms, and result cards
+- [x] Rewrite `app/globals.css` from zero to align exactly with latest reference images
+
+### 10.5 Accessibility
 - [ ] Audit keyboard navigation
 - [ ] Add ARIA labels
 - [ ] Test with screen reader
 - [ ] Check color contrast
 
-### 10.5 Performance
+### 10.6 Performance
 - [ ] Analyze bundle size
 - [ ] Lazy load heavy components
 - [ ] Optimize images
@@ -281,7 +305,7 @@
 ### 11.1 Manual Testing
 - [ ] Test modern name generation flow
 - [ ] Test historical name generation flow
-- [ ] Test TTS playback
+- [ ] Test TTS playback (future feature)
 - [ ] Test image export
 - [ ] Test save/remove names
 - [ ] Test language switching

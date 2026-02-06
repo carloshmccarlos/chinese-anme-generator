@@ -17,7 +17,7 @@ export default function ModernPage() {
   const { language, explanationDepth } = usePreferencesStore();
 
   const handleGenerate = (values: GenerateModernNameRequest) => {
-    mutate({ ...values, includeSurname: true, locale: language, explanationDepth }, {
+    mutate({ ...values, locale: language, explanationDepth }, {
       onSuccess: (data) => {
         setGeneratedNames(data.names);
       },

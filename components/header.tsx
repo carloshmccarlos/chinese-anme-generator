@@ -9,31 +9,29 @@ export function Header() {
   const t = useTranslations('header');
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-border/80 bg-background/90 backdrop-blur">
-      <div className="container mx-auto flex flex-col gap-4 px-6 py-4 sm:px-8 lg:flex-row lg:items-center lg:justify-between lg:px-12">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="group flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-md border-2 border-border bg-primary font-display text-xl tracking-tight text-primary-foreground shadow-[0_8px_18px_-10px_rgba(21,14,8,0.8)] transition-transform group-hover:-translate-y-0.5">
-              名
-            </span>
-            <div className="leading-none">
-              <p className="text-[10px] font-mono uppercase tracking-[0.4em] text-muted-foreground">
-                {t('archiveLabel')}
-              </p>
-              <p className="font-display text-xl tracking-tight">
-                {t('title')}
-              </p>
-            </div>
-          </Link>
-
-          <div className="flex items-center gap-2 lg:hidden">
-            <LanguageSelector />
-            <SettingsPanel />
+    <header className="relative z-50 w-full">
+      <div className="container mx-auto flex h-16 items-center justify-between px-6 sm:px-8 lg:px-12">
+        <Link href="/" className="group flex items-center gap-3">
+          <span className="flex h-9 w-9 items-center justify-center rounded-md plum-chip font-display text-lg tracking-tight text-primary shadow-[0_8px_18px_-14px_rgba(154,39,77,0.6)] transition-transform group-hover:-translate-y-0.5">
+            名
+          </span>
+          <div className="leading-none">
+            <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-muted-foreground/80">
+              {t('archiveLabel')}
+            </p>
+            <p className="font-display text-lg tracking-tight text-foreground">
+              {t('title')}
+            </p>
           </div>
+        </Link>
+
+        {/* Mobile Actions */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSelector />
+          <SettingsPanel />
         </div>
 
-
-
+        {/* Desktop Actions */}
         <div className="hidden items-center gap-3 lg:flex">
           <LanguageSelector />
           <SettingsPanel />

@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 
 export function NameCardSkeleton() {
   return (
-    <Card className="relative flex h-full flex-col justify-between rounded-sm bg-card paper-texture ink-shadow p-8 opacity-60 border-none">
+    <Card className="relative flex h-full flex-col justify-between rounded-sm border border-white/58 bg-white/12 paper-texture snow-panel ink-shadow p-8 opacity-70">
       <div className="flex items-start justify-between">
         <div className="flex gap-2">
           <Skeleton className="h-4 w-16 bg-muted-foreground/10" />

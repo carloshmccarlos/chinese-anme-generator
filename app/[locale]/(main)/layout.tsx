@@ -19,18 +19,16 @@ export default async function MainLayout({ children, params }: Props) {
   };
 
   return (
-    <div className="relative min-h-screen font-sans">
+    <div className="flex min-h-screen flex-col font-sans">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
-      <div className="relative z-10 flex min-h-[calc(100vh-8rem)] flex-col">
-        <main className="flex-1 container mx-auto px-6 pb-24 pt-10 sm:px-8 lg:px-12">
-          {children}
-        </main>
-        <Footer />
-      </div>
+      <main className="relative z-10 flex-1 container mx-auto px-6 py-8 sm:px-8 lg:px-12">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 }

@@ -38,13 +38,13 @@ export function LanguageSelector() {
         <Button
           variant="ghost"
           size="sm"
-          className="gap-2 rounded-md border border-transparent px-3 py-2 text-[11px] font-mono uppercase tracking-[0.3em] hover:border-primary/60 hover:bg-accent/40"
+          className="gap-2 rounded-lg border border-primary/15 bg-white/35 px-3 py-2 text-[11px] font-mono uppercase tracking-[0.3em] hover:border-primary/50 hover:bg-accent/35"
         >
           <Languages className="h-4 w-4" />
           <span className="uppercase tracking-[0.2em]">{locale}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="rounded-md border-2 border-border bg-card/95">
+      <DropdownMenuContent align="end" className="rounded-xl border border-primary/20 bg-card/95 shadow-xl">
         <DropdownMenuItem onClick={() => handleSelect('en')} className="justify-between">
           {t('en')} {locale === 'en' && <Check className="h-4 w-4" />}
         </DropdownMenuItem>

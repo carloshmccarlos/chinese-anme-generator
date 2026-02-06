@@ -66,6 +66,8 @@ The product is designed for:
 *   Dynasty (single-select or any)
 *   Name style (same options as Modern)
 *   Given name length (one / two / any)
+*   Optional surname mode:
+    *   Single-character surname (??) or double-character surname (??)
 
 #### Output
 *   Three real historical figure options
@@ -112,6 +114,8 @@ The product is designed for:
 *   Surname:
     *   Auto-suggest Chinese surname
     *   User-provided surname
+    *   Optional surname mode: single-character surname (单姓) or double-character surname (复姓)
+    *   Validation rule: if surname mode is selected, surname must match the selected character count (1 for 单姓, 2 for 复姓)
 
 #### Output
 For each generated name:
@@ -137,13 +141,15 @@ For each generated name:
 *   If a real name is provided, prioritize pronunciation similarity in ranking
 *   Guardrails: avoid notorious figures, immoral roles, or eunuch narratives
 *   Output must include dynasty context and a locale-matched short story (Brief/Detailed)
+*   If user sets surname mode (??/??), prefer names that match the selected surname form while keeping historical accuracy
+*   Style must be enforced strictly: style-mismatched candidates are invalid
 
 ### Modern Mode (LLM-based)
 Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 
 **LLM Configuration:**
 *   **Provider:** SiliconFlow (https://api.siliconflow.cn/v1)
-*   **Model:** Qwen/Qwen3-VL-235B-A22B-Instruct
+*   **Model:** deepseek-ai/DeepSeek-V3.2
 *   **API:** OpenAI-compatible (can use OpenAI SDK with custom baseURL)
 
 **Generation approach:**
@@ -152,15 +158,21 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
     *   Semantic analysis: extract meaning/origin of the name
 2.  **Step 2: Build generation prompt with user preferences**
     *   Gender, style, themes, surname preference
+    *   Optional surname mode (单姓/复姓) + strict character-count validation for wanted surname
     *   UI locale (EN/ZH/JA/KO) for the explanation language
     *   Explanation depth (Brief/Detailed) for verbosity
     *   Include character frequency constraints (avoid rare/archaic characters)
+    *   Include strict style constraints (reject style-mismatched candidates)
 3.  **Step 3: LLM generates candidate names with:**
     *   Full name + pinyin
     *   Character-by-character meaning
     *   Suitability explanation
     *   Pronunciation warnings if applicable
-4.  **Step 4: Return top N names (default: 3)**
+    *   Realistic contemporary usage (avoid fantasy/novel-character style names)
+4.  **Step 4: Return exactly N names when possible (default: 3)**
+    *   If a single model response is insufficient, retry generation and aggregate only valid, option-compliant names until N is reached.
+    *   Never backfill with names that do not satisfy user-selected options.
+    *   If N valid names still cannot be found after retry limit, return an explicit error.
 
 **Error Handling:**
 *   LLM timeout: Show friendly error with retry button
@@ -184,25 +196,20 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 ## 7. UX / UI Requirements
 
 *   Two clear tabs: Historical | Modern
-*   Visual style: traditional Chinese aesthetic (ink, vermilion seals, paper textures, serif typography)
+*   Visual style: `踏雪寻梅` aesthetic (snow-wash gradients, plum-blossom accents, airy paper textures, serif-forward typography)
+*   Background presentation: use a soft painted-canvas backdrop with branch/plum atmosphere and translucent UI layering
+*   Card presentation: key cards should remain semi-transparent so the backdrop is visible through interface surfaces
+*   Reference-driven fidelity: landing page composition should track provided visual mocks (editorial hero, dual CTA cards, framed shell)
 *   Name card layout
 *   "Generate again" CTA
 *   Save / favorite names
 *   Copy text
 *   Export name card as image (html2canvas)
 *   Tooltip for tones and pronunciation
-*   Audio pronunciation playback (TTS for pinyin)
 *   AI explanation depth toggle (Brief / Detailed)
 *   Multilingual explanations (language selector: EN, ZH, JA, KO)
     *   AI-generated narrative content must match the selected UI locale.
     *   Explanation depth controls verbosity for all locales (Brief = concise, Detailed = expanded).
-
-**TTS Configuration:**
-*   **Provider:** SiliconFlow (https://api.siliconflow.cn/v1/audio/speech)
-*   **Model:** FunAudioLLM/CosyVoice2-0.5B
-*   **Voice:** FunAudioLLM/CosyVoice2-0.5B:anna (female, clear pronunciation)
-*   **Format:** mp3
-*   **Use case:** Pronounce pinyin for generated names
 
 **Loading States:**
 *   Skeleton loader for name cards during LLM generation
@@ -217,6 +224,7 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 *   Breakpoints: 640px (sm), 768px (md), 1024px (lg)
 *   Touch-friendly controls for mobile
 *   Collapsible filters on mobile
+*   Modern preferences form layout contract: 2 columns x 3 rows on desktop, with 4 selectors in rows 1-2 and 2 text inputs in row 3
 
 ## 8. Out of Scope (v1)
 
@@ -225,6 +233,7 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 *   Dialect-specific names
 *   Ming/Qing/modern historical figures
 *   AI-generated fictional dynasties
+*   TTS pronunciation playback (planned for future release)
 
 ## 7.5 SEO & Sharing
 

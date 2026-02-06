@@ -1,14 +1,16 @@
 import type { ModernName, GeneratedHistoricalName } from './name';
 import type { ExplanationDepth, LanguagePreference } from './preferences';
 
+export type SurnameType = 'single' | 'double';
+
 export interface GenerateModernNameRequest {
   realName?: string;
   gender: 'male' | 'female';
   style: string;
   themes: string[];
   length: 'single' | 'double' | 'any';
-  includeSurname: boolean;
-  surname?: string;
+  surnameType?: SurnameType;
+  wantedSurname?: string;
   locale?: LanguagePreference;
   explanationDepth?: ExplanationDepth;
 }
@@ -30,15 +32,11 @@ export interface GenerateHistoricalNameRequest {
     | 'Any';
   style: string;
   length: 'single' | 'double' | 'any';
+  surnameType?: SurnameType;
   locale?: LanguagePreference;
   explanationDepth?: ExplanationDepth;
 }
 
 export interface GenerateHistoricalNameResponse {
   names: GeneratedHistoricalName[];
-}
-
-export interface TTSRequest {
-  text: string;
-  voice?: string;
 }
