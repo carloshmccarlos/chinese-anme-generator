@@ -18,6 +18,7 @@
 **Total Steps: ~120/150 Completed**
 
 ## Recent Updates
+- **SEO + Icon Completion (Feb 2026)**: Fixed malformed root SVG icon, regenerated favicon, added Apple/install icons (192/512 + maskable), and shipped dedicated OG/Twitter preview assets with metadata + manifest wiring.
 - **Landing Page Redesign (Feb 2026)**: Implemented editorial calligraphy luxury aesthetic with asymmetric hero layout (7-col text / 5-col cards), gradient headline accent, decorative calligraphic watermarks (今/古), and liquid glass CTA cards.
 - **Modern/Historical Pages Redesign**: Rebuilt with seamless transparent styling, back navigation, decorative character watermarks, and refined typography hierarchy.
 - **Transparent Forms**: Made form cards fully transparent (`bg-transparent`, `border-none`, `shadow-none`) with subtle `border-primary/10` dividers.
@@ -50,4 +51,3 @@
 - Added sitemap.xml + robots.txt and per-locale / mode-specific metadata (canonical + hreflang).
 - Completed full SEO pass targeting keyword **"best Chinese name generator"** across root, locale, modern, and historical metadata.
 - Added keyword-aware OG/Twitter metadata, JSON-LD (Organization + WebSite + WebApplication), web manifest, and upgraded sitemap/robots coverage.
-

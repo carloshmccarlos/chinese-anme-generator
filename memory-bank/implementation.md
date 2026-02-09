@@ -249,6 +249,9 @@
 - [x] Add favicon
 - [x] Add robots + sitemap
 - [x] Add primary keyword focus: "best Chinese name generator"
+- [x] Add production icon set (ICO, SVG, 192/512 PNG, Apple touch icon)
+- [x] Add dedicated OG/Twitter share preview assets (`public/og-image.png`, `public/twitter-image.png`)
+- [x] Expand web manifest icons with maskable + install sizes
 
 ### 9.2 Dynamic Metadata
 - [x] Add generateMetadata to modern page

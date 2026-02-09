@@ -8,6 +8,7 @@ import {
   SITE_KEYWORDS,
   SITE_NAME,
   SITE_OG_IMAGE,
+  SITE_TWITTER_IMAGE,
   SITE_URL,
 } from '@/lib/seo';
 import './globals.css';
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: SITE_NAME[BASE_LOCALE],
     description: SITE_DESCRIPTION[BASE_LOCALE],
-    images: [SITE_OG_IMAGE],
+    images: [SITE_TWITTER_IMAGE],
   },
   robots: {
     index: true,
@@ -79,9 +80,16 @@ export const metadata: Metadata = {
   },
   manifest: '/manifest.webmanifest',
   icons: {
-    icon: '/favicon.ico',
-    apple: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', type: 'image/x-icon' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', type: 'image/png', sizes: '180x180' },
+    ],
+    shortcut: ['/favicon.ico'],
   },
 };
 

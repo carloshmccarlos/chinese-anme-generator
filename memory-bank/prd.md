@@ -241,6 +241,7 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 *   **Dynamic OG title:** "Chinese Name: [Generated Name]"
 *   **Dynamic OG description:** Name meaning + pinyin
 *   **OG image:** Auto-generated name card preview
+*   **Default share assets:** Branded fallback OG/Twitter preview images for homepage and locale pages
 
 **URL Structure:**
 *   /historical - Historical mode landing
@@ -252,6 +253,7 @@ Uses SiliconFlow API with Qwen3-VL-235B-A22B-Instruct for name generation.
 *   Structured data (JSON-LD) for cultural content
 *   Semantic HTML for accessibility
 *   Technical SEO: sitemap.xml, robots.txt, canonical + hreflang alternates per locale
+*   Full icon coverage: favicon (`.ico`), SVG icon, Apple touch icon, and installable 192/512 + maskable manifest icons
 *   Primary organic keyword focus: **"best Chinese name generator"** (title, description, keywords, and OG/Twitter metadata for EN pages)
 
 ## 9. Risks & Mitigations

@@ -7,6 +7,7 @@ import {
   PAGE_TITLE,
   SITE_NAME,
   SITE_OG_IMAGE,
+  SITE_TWITTER_IMAGE,
   toSafeLocale,
 } from '@/lib/seo';
 
@@ -51,7 +52,7 @@ export async function generateMetadata(
       card: 'summary_large_image',
       title,
       description,
-      images: [SITE_OG_IMAGE],
+      images: [SITE_TWITTER_IMAGE],
     },
   };
 }

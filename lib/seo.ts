@@ -3,7 +3,8 @@ import type { LanguagePreference } from '@/types/preferences';
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://chinese-name-gen.vercel.app';
 export const PRIMARY_SEO_KEYWORD = 'best Chinese name generator';
-export const SITE_OG_IMAGE = '/backgroud.png';
+export const SITE_OG_IMAGE = '/og-image.png';
+export const SITE_TWITTER_IMAGE = '/twitter-image.png';
 
 export const OG_LOCALE: Record<LanguagePreference, string> = {
   en: 'en_US',
@@ -95,11 +96,15 @@ export const toSafeLocale = (value: string): LanguagePreference => {
     : routing.defaultLocale;
 };
 
-export const buildLanguageAlternates = (path: string): Record<LanguagePreference, string> => {
+export const buildLanguageAlternates = (
+  path: string
+): Record<LanguagePreference | 'x-default', string> => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  const alternates = {} as Record<LanguagePreference, string>;
+  const alternates = {} as Record<LanguagePreference | 'x-default', string>;
   routing.locales.forEach((locale) => {
     alternates[locale] = `/${locale}${normalizedPath === '/' ? '' : normalizedPath}`;
   });
+  alternates['x-default'] =
+    `/${routing.defaultLocale}${normalizedPath === '/' ? '' : normalizedPath}`;
   return alternates;
 };

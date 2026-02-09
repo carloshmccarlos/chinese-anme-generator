@@ -71,3 +71,5 @@ Chinese Name Generator is a Next.js 16 application with a dual-mode UI (Modern +
 - `app/sitemap.ts` now includes root + locale mode routes with priority/frequency metadata.
 - `app/robots.ts` now exposes host + sitemap and keeps API routes excluded from crawling.
 - `app/manifest.ts` adds web manifest metadata for search/social platform consistency.
+- SEO assets are now explicit static files in `public/` for social crawlers: `og-image.png` and `twitter-image.png`.
+- Icon coverage now includes refreshed `app/favicon.ico`, `app/icon.svg`, plus install/Apple icons (`public/icon-192.png`, `public/icon-512.png`, `public/apple-touch-icon.png`).

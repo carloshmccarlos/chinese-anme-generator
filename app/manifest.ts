@@ -1,11 +1,11 @@
 import type { MetadataRoute } from 'next';
-import { SITE_NAME, SITE_URL } from '@/lib/seo';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/seo';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME.en,
-    short_name: 'NameGen',
-    description: 'Best Chinese name generator for modern and historical Chinese names.',
+    short_name: 'CN Name Gen',
+    description: SITE_DESCRIPTION.en,
     start_url: '/en',
     scope: '/',
     display: 'standalone',
@@ -16,13 +16,32 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         src: '/favicon.ico',
-        sizes: '48x48',
+        sizes: '16x16 32x32 48x48',
         type: 'image/x-icon',
       },
       {
-        src: '/icon.svg',
-        sizes: 'any',
-        type: 'image/svg+xml',
+        src: '/icon-192.png',
+        sizes: '192x192',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'any',
+      },
+      {
+        src: '/icon-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
+      {
+        src: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+        purpose: 'any',
       },
     ],
     id: `${SITE_URL}/en`,
